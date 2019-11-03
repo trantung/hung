@@ -1,6 +1,10 @@
 
 $(document).ready(function () {
     owlBanner();
+    owlCamNhaKhachHang();
+    owlProduct();
+     owlProductThumb();
+
     function owlBanner() {
         if ($('.swiper-wrapper .item').length > 0) {
             $('.swiper-wrapper').owlCarousel({
@@ -16,11 +20,60 @@ $(document).ready(function () {
             });
         }
     }
-    $('.owl-dot').each(function(){
+    $('.swiper-wrapper .owl-dot').each(function(){
         $(this).children('span').text($(this).index()+1);
     });
+    function owlCamNhaKhachHang() {
+        if ($('.tesmon_items .tesmon_item').length > 0) {
+            $('.tesmon_items').owlCarousel({
+                loop: true,
+                autoplay: true,
+                margin: 0,
+                slideSpeed: 1000,
+                smartSpeed:1500,
+                nav: false,
+                dots: true,
+                fluidSpeed: true,
+                items: 1,
+                navText:[],
+            });
+        }
+    }
 
+   function owlProduct() {
+        if ($('.imgs .img').length > 0) {
+            $('.imgs ').owlCarousel({
+                loop: false,
+                autoplay: false,
+                margin: 10,
+                slideSpeed: 1000,
+                smartSpeed:1500,
+                nav: false,
+                dots: true,
+                fluidSpeed: false,
+                items: 4,
+                navText:[],
+            });
+        }
+    }
 
+ function owlProductThumb(){
+        if($('.layui-product-lists .layui-sizes').length > 0){
+            $('.layui-product-lists').owlCarousel({
+                loop: true,
+                autoplay: false,
+                margin: 10,
+                slideSpeed: 1000,
+                nav: true,
+                dots: false,
+                autoWidth: true,
+                fluidSpeed: true,
+                items: 4,
+                navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
+            });
+        }
+    }
+    
     // hết js slider 
     var boxer = $('#commentScroll,#orderScroll'); 
     // hiêu ứng chạy
@@ -57,7 +110,7 @@ $(document).ready(function () {
     });
 
     var fnum = $('input[name="number"]').val();
-    $("#sizeselect > div").each(function(data){
+    $(".img").each(function(data){
                 $(this).bind("click",function (){
                     $(this).addClass('active').siblings().removeClass("active");
                     var id=$(this).attr('data-field');
